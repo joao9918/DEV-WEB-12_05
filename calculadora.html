@@ -88,19 +88,17 @@
 
 
 	function fponto () {
-    // Garante que 'atual' seja tratado como string
-    atual = atual.toString();
+		atual = atual.toString();
 
-    // Adiciona ponto apenas se ainda não existir
-    if (!atual.includes('.')) {
-        atual += '.';
-    }
-
-    // Atualiza o visor
-    let visor = document.getElementById('visor');
-    visor.textContent = atual;
+		if (!atual.includes('.')) {
+			if (atual === '0') {
+				atual += '.';
+			} else {
+				atual += '.';
+			}
+		}
+		document.getElementById('visor').textContent = atual;
 	}
-
 
 
 	function fc () {
@@ -160,7 +158,7 @@
 
 
 	function fsete() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '7';
 	    } else {
 		atual = '7';
@@ -169,7 +167,7 @@
 	    visor.textContent = atual;
 	}
     function foito() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '8';
 	    } else {
 		atual = '8';
@@ -178,7 +176,7 @@
 	    visor.textContent = atual;
 	}
     function fnove() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '9';
 	    } else {
 		atual = '9';
@@ -189,7 +187,7 @@
 
     
     function fquatro() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '4';
 	    } else {
 		atual = '4';
@@ -198,7 +196,7 @@
 	    visor.textContent = atual;
 	}
     function fcinco() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '5';
 	    } else {
 		atual = '5';
@@ -207,7 +205,7 @@
 	    visor.textContent = atual;
 	}
     function fseis() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '6';
 	    } else {
 		atual = '6';
@@ -218,7 +216,7 @@
 
 
     function fum() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '1';
 	    } else {
 		atual = '1';
@@ -227,7 +225,7 @@
 	    visor.textContent = atual;
 	}
     function fdois() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '2';
 	    } else {
 		atual = '2';
@@ -236,7 +234,7 @@
 	    visor.textContent = atual;
 	}
     function ftres() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '3';
 	    } else {
 		atual = '3';
@@ -247,7 +245,7 @@
 
 
     function fzero() {
-	    if( atual != 0 ) {
+	    if( atual != '0' ) {
 		atual += '0';
 	    } else {
 		atual = '0';
