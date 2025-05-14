@@ -91,11 +91,7 @@
 		atual = atual.toString();
 
 		if (!atual.includes('.')) {
-			if (atual === '0') {
-				atual += '.';
-			} else {
-				atual += '.';
-			}
+			atual += '.';
 		}
 		document.getElementById('visor').textContent = atual;
 	}
