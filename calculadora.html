@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+	<style>
+		#calculadora {
+			background-color: #696669;
+			padding: 20px 20px 20px 20px;
+			width: 220px;
+			border-radius: 15px;
+			border: 2px solid black;
+		}
+        input {
+			width: 50px;
+			height: 40px;
+			border: 2px solid;
+			border-radius: 7px ;
+			font-size: 22px;
+			background-color: rgb(255, 249, 227);
+			font-family: 'Courier New', Courier, monospace;
+			font-weight: bold;
+		}
+		#botaoNULO {
+			color: white;
+			border: 1px solid #696669;;
+			background-color: #696669;
+		}
+		textarea {
+			font-size: 31px;
+			height: 37px;
+			width: 205px;
+			background-color: rgb(255, 249, 227);
+			resize: none;
+			pointer-events: none;
+			border: 2px solid black;
+			font-weight: lighter;
+		}
+    </style>
+
+    <script>
+	let atual = '0';
+	let num1 = 0;
+	let num2 = 0;
+	let operacao = null;
+
+	window.onload = inicio;
+
+	function inicio() {
+	    let visor = document.getElementById('visor');
+	    visor.textContent = atual;
+
+	    document.getElementById('botaoSete').addEventListener('click', fsete);
+        document.getElementById('botaoOito').addEventListener('click', foito);
+        document.getElementById('botaoNove').addEventListener('click', fnove);
+
+        document.getElementById('botaoQuatro').addEventListener('click', fquatro);
+        document.getElementById('botaoCinco').addEventListener('click', fcinco);
+        document.getElementById('botaoSeis').addEventListener('click', fseis);
+
+        document.getElementById('botaoUm').addEventListener('click', fum);
+        document.getElementById('botaoDois').addEventListener('click', fdois);
+        document.getElementById('botaoTres').addEventListener('click', ftres);
+
+        document.getElementById('botaoZero').addEventListener('click', fzero);
+
+        document.getElementById('botaoSoma').addEventListener('click',fsoma);
+		document.getElementById('botaoIgual').addEventListener('click',figual);
+		document.getElementById('botaoSub').addEventListener('click',fsub);
+		document.getElementById('botaoMulti').addEventListener('click',fmulti);
+		document.getElementById('botaoDiv').addEventListener('click',fdiv);
+		document.getElementById('botaoC').addEventListener('click',fc);
+		document.getElementById('botaoPonto').addEventListener('click',fponto);
+		document.getElementById('botaoApagar').addEventListener('click', fapagar);
+	}
+
+	function fapagar () {
+		if (atual.length > 1) {
+			atual = atual.slice(0,-1);
+		}
+		else {
+			atual = 0;
+		}
+		let visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+
+
+	function fponto () {
+    // Garante que 'atual' seja tratado como string
+    atual = atual.toString();
+
+    // Adiciona ponto apenas se ainda não existir
+    if (!atual.includes('.')) {
+        atual += '.';
+    }
+
+    // Atualiza o visor
+    let visor = document.getElementById('visor');
+    visor.textContent = atual;
+	}
+
+
+
+	function fc () {
+		atual = 0;
+		let visor = document.getElementById('visor');
+	    visor.textContent = atual;
+
+	}
+
+	function figual () {
+		num2 = atual;
+		if(operacao == '+') {
+			atual = parseFloat(num1) + parseFloat(num2);
+		}
+		else if(operacao == '-') {
+			atual = parseFloat(num1) - parseFloat(num2);
+		}
+		else if(operacao == '*') {
+			atual = parseFloat(num1) * parseFloat(num2);
+		}
+		else if(operacao == '÷') {
+			atual = parseFloat(num1) / parseFloat(num2);
+			atual = +atual.toPrecision(5);
+		}
+		let visor = document.getElementById('visor');
+	    visor.textContent = atual;
+		atual = 0;
+		operacao = null;
+	}
+	function fdiv () {
+		num1 = atual;
+		atual = 0;
+		document.getElementById('visor').textContent = atual;
+		operacao = '÷';
+	}
+
+	function fmulti () {
+		num1 = atual;
+		atual = 0;
+		document.getElementById('visor').textContent = atual;
+		operacao = '*';
+	}
+
+	function fsub () {
+		num1 = atual;
+		atual = 0;
+		document.getElementById('visor').textContent = atual;
+		operacao = '-';
+	}
+
+	function fsoma () {
+		num1 = atual;
+		atual = 0;
+		document.getElementById('visor').textContent = atual;
+		operacao = '+';
+	}
+
+
+	function fsete() {
+	    if( atual != 0 ) {
+		atual += '7';
+	    } else {
+		atual = '7';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+    function foito() {
+	    if( atual != 0 ) {
+		atual += '8';
+	    } else {
+		atual = '8';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+    function fnove() {
+	    if( atual != 0 ) {
+		atual += '9';
+	    } else {
+		atual = '9';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+
+    
+    function fquatro() {
+	    if( atual != 0 ) {
+		atual += '4';
+	    } else {
+		atual = '4';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+    function fcinco() {
+	    if( atual != 0 ) {
+		atual += '5';
+	    } else {
+		atual = '5';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+    function fseis() {
+	    if( atual != 0 ) {
+		atual += '6';
+	    } else {
+		atual = '6';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+
+
+    function fum() {
+	    if( atual != 0 ) {
+		atual += '1';
+	    } else {
+		atual = '1';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+    function fdois() {
+	    if( atual != 0 ) {
+		atual += '2';
+	    } else {
+		atual = '2';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+    function ftres() {
+	    if( atual != 0 ) {
+		atual += '3';
+	    } else {
+		atual = '3';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+
+
+    function fzero() {
+	    if( atual != 0 ) {
+		atual += '0';
+	    } else {
+		atual = '0';
+	    }
+	    var visor = document.getElementById('visor');
+	    visor.textContent = atual;
+	}
+
+    </script>
+</head>
+<body>
+    <div id="calculadora">
+		<textarea name="visor" id="visor"></textarea>
+		<br><br>
+		<input type="button" value=" " id="botaoNULO">
+		<input type="button" value=" " id="botaoNULO">
+		<input type="button" value="C" id="botaoC">
+		<input type="button" value="⌫" id="botaoApagar">
+		<br><br>
+		
+		<input type="button" value="7" id="botaoSete">
+		<input type="button" value="8" id="botaoOito">
+		<input type="button" value="9" id="botaoNove">
+		<input type="button" value="÷" id="botaoDiv">
+		<br><br>
+		<input type="button" value="4" id="botaoQuatro">
+		<input type="button" value="5" id="botaoCinco">
+		<input type="button" value="6" id="botaoSeis">
+		<input type="button" value="*" id="botaoMulti">
+		<br><br>
+		<input type="button" value="1" id="botaoUm">
+		<input type="button" value="2" id="botaoDois">
+		<input type="button" value="3" id="botaoTres">
+		<input type="button" value="-" id="botaoSub">
+		<br><br>
+		<input type="button" value="." id="botaoPonto">
+		<input type="button" value="0" id="botaoZero">
+		<input type="button" value="=" id="botaoIgual">
+		<input type="button" value="+" id="botaoSoma">
+    </div>
+</body>
+</html>
